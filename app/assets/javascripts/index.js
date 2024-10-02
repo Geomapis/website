@@ -32,7 +32,9 @@ $(document).ready(function () {
     zoomControl: false,
     layerControl: false,
     contextmenu: true,
-    worldCopyJump: true
+    worldCopyJump: true,
+    center: [40.14801, 44.39865],
+    zoom: 15
   });
 
   OSM.loadSidebarContent = function (path, callback) {
@@ -233,7 +235,8 @@ $(document).ready(function () {
   if (params.bounds) {
     map.fitBounds(params.bounds);
   } else {
-    map.setView([params.lat, params.lon], params.zoom);
+    // map.setView([params.lat, params.lon], params.zoom);
+    map.setView([40.1480, 44.3986], 13);
   }
 
   if (params.marker) {

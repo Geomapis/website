@@ -170,7 +170,7 @@ class SiteController < ApplicationController
   def redirect_map_params
     anchor = []
 
-    anchor << "map=#{params.delete(:zoom) || 5}/#{params.delete(:lat)}/#{params.delete(:lon)}" if params[:lat] && params[:lon]
+    anchor << "map=#{params.delete(:zoom) || 15}/#{params.delete(:lat)}/#{params.delete(:lon)}" if params[:lat] && params[:lon]
 
     if params[:layers]
       anchor << "layers=#{params.delete(:layers)}"

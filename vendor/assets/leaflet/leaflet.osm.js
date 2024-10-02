@@ -3,7 +3,7 @@ L.OSM = {};
 L.OSM.TileLayer = L.TileLayer.extend({
   options: {
     url: 'http://37.186.119.202:8082/hot/{z}/{x}/{y}.png',
-    attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+    attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
   },
 
   initialize: function (options) {
@@ -15,7 +15,16 @@ L.OSM.TileLayer = L.TileLayer.extend({
 L.OSM.Mapnik = L.OSM.TileLayer.extend({
   options: {
     url: 'http://37.186.119.202:8082/hot/{z}/{x}/{y}.png',
-    maxZoom: 28
+    maxZoom: 28,
+    minZoom: 12,
+  }
+});
+
+L.OSM.Google = L.OSM.TileLayer.extend({
+  options: {
+    url: 'http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}',
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
   }
 });
 
@@ -32,6 +41,7 @@ L.OSM.CyclOSM = L.OSM.TileLayer.extend({
   options: {
     url: 'http://37.186.119.202:8081/aero/{z}/{x}/{y}.png',
     maxZoom: 23,
+    minZoom: 12,
     subdomains: 'abc',
     attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors. Tiles courtesy of <a href="https://www.openstreetmap.fr" target="_blank">OpenStreetMap France</a>'
   }

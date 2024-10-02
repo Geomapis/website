@@ -12,6 +12,7 @@
 =end%>
 
  <nav class='primary'>
+ <% unless controller_name == 'sessions' && action_name == 'new' %>
     <%= content_for :header %>
     <div class="btn-group">
       <div id="edit_tab" class="btn-group">
@@ -48,6 +49,7 @@
 <%
 =end%>
     </div>
+  <% end %>
   </nav> 
 
 
@@ -125,19 +127,21 @@
             <%= current_user.display_name %>
           </span>
         </button>
-        <div class='dropdown-menu dropdown-menu-end'>
-          <%= link_to t("users.show.my_dashboard"), dashboard_path, :class => "dropdown-item" %>
-          <%= link_to inbox_messages_path, :class => "dropdown-item" do %>
-            <%= t("users.show.my messages") %>
-            <span class='badge count-number'><%= number_with_delimiter(current_user.new_messages.size) %></span>
-          <% end %>
-          <%= link_to t("users.show.my profile"), current_user, :class => "dropdown-item" %>
-          <%= link_to t("users.show.my settings"), edit_account_path, :class => "dropdown-item" %>
-          <%= link_to t("users.show.my_preferences"), preferences_path, :class => "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= yield :greeting %>
-          <%= link_to t("layouts.logout"), logout_path(:referer => request.fullpath), :method => "post", :class => "geolink dropdown-item" %>
-        </div>
+          <div class='dropdown-menu dropdown-menu-end'>
+            <% if current_user.display_name == "Client1" %>
+              <%= link_to t("users.show.my_dashboard"), dashboard_path, :class => "dropdown-item" %>
+              <%= link_to inbox_messages_path, :class => "dropdown-item" do %>
+                <%= t("users.show.my messages") %>
+                <span class='badge count-number'><%= number_with_delimiter(current_user.new_messages.size) %></span>
+              <% end %>
+              <%= link_to t("users.show.my profile"), current_user, :class => "dropdown-item" %>
+              <%= link_to t("users.show.my settings"), edit_account_path, :class => "dropdown-item" %>
+              <%= link_to t("users.show.my_preferences"), preferences_path, :class => "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= yield :greeting %>
+            <% end %>
+            <%= link_to t("layouts.logout"), logout_path(:referer => request.fullpath), :method => "post", :class => "geolink dropdown-item" %>
+          </div>
       </div>
     <% else %>
       <%

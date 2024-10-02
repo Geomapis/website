@@ -222,14 +222,14 @@ describe("OSM", function () {
   describe(".locationCookie", function () {
     it("creates a location cookie value", function () {
       $("body").html($("<div id='map'>"));
-      var map = new L.OSM.Map("map", { center: [57.6247, -3.6845], zoom: 9 });
+      var map = new L.OSM.Map("map", { center: [40.14801, 44.39865], zoom: 15 });
       map.updateLayers("");
       expect(OSM.locationCookie(map)).to.eq("-3.6845|57.6247|9|M");
     });
 
     it("respects zoomPrecision", function () {
       $("body").html($("<div id='map'>"));
-      var map = new L.OSM.Map("map", { center: [57.6247, -3.6845], zoom: 9 });
+      var map = new L.OSM.Map("map", { center: [40.14801, 44.39865], zoom: 15 });
       map.updateLayers("");
       expect(OSM.locationCookie(map)).to.eq("-3.6845|57.6247|9|M");
 
