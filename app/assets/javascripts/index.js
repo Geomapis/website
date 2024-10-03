@@ -14,7 +14,7 @@
 //= require index/contextmenu
 //= require index/search
 //= require index/layers/data
-//= require index/layers/myLayer
+//= require index/layers/zoneThree
 //= require index/export
 //= require index/layers/notes
 //= require index/history
@@ -170,26 +170,26 @@ $(document).ready(function () {
   OSM.initializeContextMenu(map);
 
   if (OSM.STATUS !== "api_offline" && OSM.STATUS !== "database_offline") {
-    OSM.initializeNotesLayer(map);
-    if (params.layers.indexOf(map.noteLayer.options.code) >= 0) {
-      map.addLayer(map.noteLayer);
-    }
+    // OSM.initializeNotesLayer(map);
+    // if (params.layers.indexOf(map.noteLayer.options.code) >= 0) {
+    //   map.addLayer(map.noteLayer);
+    // }
 
     OSM.initializeDataLayer(map);
-    console.log(map.dataLayer.options);
+    // console.log(map.dataLayer.options);
     if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
       map.addLayer(map.dataLayer);
     }
 
     OSM.initializeMyLayer(map);
-    console.log(params.layers.indexOf(map.myLayer.options.code));
-    if (params.layers.indexOf(map.myLayer.options.code) >= 0) {
-      map.addLayer(map.myLayer);
+    // console.log(params.layers.indexOf(map.zoneThree.options.code));
+    if (params.layers.indexOf(map.zoneThree.options.code) >= 0) {
+      map.addLayer(map.zoneThree);
     }
 
-    if (params.layers.indexOf(map.gpsLayer.options.code) >= 0) {
-      map.addLayer(map.gpsLayer);
-    }
+    // if (params.layers.indexOf(map.gpsLayer.options.code) >= 0) {
+    //   map.addLayer(map.gpsLayer);
+    // }
   }
 
   $(".leaflet-control .control-button").tooltip({ placement: "left", container: "body" });

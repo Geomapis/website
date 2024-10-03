@@ -130,8 +130,8 @@ L.OSM.Map = L.Map.extend({
     this.dataLayer = new L.OSM.DataLayer(null);
     this.dataLayer.options.code = "D";
 
-    this.myLayer = new L.OSM.DataLayer(null);
-    this.myLayer.options.code = "E";
+    this.zoneThree = new L.OSM.DataLayer(null);
+    this.zoneThree.options.code = "E";
 
     this.gpsLayer = new L.OSM.GPS({
       pane: "overlayPane",

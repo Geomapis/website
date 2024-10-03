@@ -99,7 +99,7 @@ L.OSM.GPS = L.OSM.TileLayer.extend({
 
 L.OSM.MyLayer = L.FeatureGroup.extend({
   options: {
-    areaTags: ['area', 'building', 'leisure', 'tourism', 'ruins', 'historic', 'landuse', 'military', 'natural', 'sport'],
+    areaTags: ['zone'],
     uninterestingTags: ['source', 'source_ref', 'source:ref', 'history', 'attribution', 'created_by', 'tiger:county', 'tiger:tlid', 'tiger:upload_uuid'],
     styles: {}
   },

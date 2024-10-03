@@ -94,7 +94,7 @@ L.OSM.layers = function (options) {
         var item = $("<li>")
           .appendTo(overlays);
 
-        if (name === "notes" || name === "data" || name === "myLayer") {
+        if (name === "notes" || name === "data" || name === "zoneThree") {
           item
             .attr("title", I18n.t("javascripts.site.map_" + name + "_zoom_in_tooltip"))
             .tooltip("disable");
@@ -148,10 +148,9 @@ L.OSM.layers = function (options) {
         });
       };
 
-        console.log(map)
       // addOverlay(map.noteLayer, "notes", OSM.MAX_NOTE_REQUEST_AREA);
       addOverlay(map.dataLayer, "data", OSM.MAX_REQUEST_AREA);
-      addOverlay(map.myLayer, "myLayer", OSM.MAX_REQUEST_AREA);
+      addOverlay(map.zoneThree, "zoneThree", OSM.MAX_REQUEST_AREA);
       // addOverlay(map.gpsLayer, "gps", Number.POSITIVE_INFINITY);
     }
   };

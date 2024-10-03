@@ -1,8 +1,8 @@
 OSM.initializeMyLayer = function (map) {
 	var loadedBounds;
-	var myLayer = map.myLayer;
+	var zoneThree = map.zoneThree;
   
-	myLayer.setStyle({
+	zoneThree.setStyle({
 	  way: {
 		weight: 3,
 		color: "#000000",
@@ -17,23 +17,23 @@ OSM.initializeMyLayer = function (map) {
 	  }
 	});
   
-	myLayer.isWayArea = function () {
+	zoneThree.isWayArea = function () {
 	  return false;
 	};
   
-	myLayer.on("click", function (e) {
+	zoneThree.on("click", function (e) {
 	  onSelect(e.layer);
 	});
   
 	map.on("layeradd", function (e) {
-	  if (e.layer === myLayer) {
+	  if (e.layer === zoneThree) {
 		map.on("moveend", updateData);
 		updateData();
 	  }
 	});
   
 	map.on("layerremove", function (e) {
-	  if (e.layer === myLayer) {
+	  if (e.layer === zoneThree) {
 		map.off("moveend", updateData);
 		$("#browse_status").empty();
 	  }
@@ -89,9 +89,9 @@ OSM.initializeMyLayer = function (map) {
 	  dataLoader = $.ajax({
 		url: url,
 		success: function (xml) {
-		  myLayer.clearLayers();
+		  zoneThree.clearLayers();
   
-		  var features = myLayer.buildFeatures(xml);
+		  var features = zoneThree.buildFeatures(xml);
   
 		  features = features.filter(function(feature) {
 			return (feature.tags && feature.tags.zone === "3") || feature.tags.name === "Zone 3";
@@ -103,7 +103,7 @@ OSM.initializeMyLayer = function (map) {
   
 		  function addFeatures() {
 			$("#browse_status").empty();
-			myLayer.addData(features);
+			zoneThree.addData(features);
 			loadedBounds = bounds;
 		  }
   
