@@ -14,6 +14,7 @@
 //= require index/contextmenu
 //= require index/search
 //= require index/layers/data
+//= require index/layers/myLayer
 //= require index/export
 //= require index/layers/notes
 //= require index/history
@@ -175,8 +176,15 @@ $(document).ready(function () {
     }
 
     OSM.initializeDataLayer(map);
+    console.log(map.dataLayer.options);
     if (params.layers.indexOf(map.dataLayer.options.code) >= 0) {
       map.addLayer(map.dataLayer);
+    }
+
+    OSM.initializeMyLayer(map);
+    console.log(params.layers.indexOf(map.myLayer.options.code));
+    if (params.layers.indexOf(map.myLayer.options.code) >= 0) {
+      map.addLayer(map.myLayer);
     }
 
     if (params.layers.indexOf(map.gpsLayer.options.code) >= 0) {

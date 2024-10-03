@@ -40,7 +40,9 @@
       <%= yield %>
     </div>
 
-    <% unless current_user %>
+    <%
+=begin%>
+ <% unless current_user %>
       <div class="welcome p-3" hidden>
         <%= render "sidebar_header", :title => t("layouts.intro_header") %>
         <p class="fs-6 fw-light"><%= t "layouts.intro_text" %></p>
@@ -54,7 +56,9 @@
           <a class="btn btn-primary w-100 d-flex align-items-center justify-content-center" href="<%= user_new_path %>"><%= t("layouts.start_mapping") %></a>
         </div>
       </div>
-    <% end %>
+    <% end %> 
+<%
+=end%>
 
     <%= render :partial => "layouts/banner" %>
   </div>

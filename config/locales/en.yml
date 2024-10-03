@@ -3073,6 +3073,7 @@ en:
         header: Map Layers
         notes: Map Notes
         data: Map Data
+        myLayer: Zone 3
         gps: Public GPS Traces
         overlays: Enable overlays for troubleshooting the map
         title: "Layers"

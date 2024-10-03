@@ -93,6 +93,14 @@ OSM.initializeDataLayer = function (map) {
 
         var features = dataLayer.buildFeatures(xml);
 
+        // features = features.filter(function(feature) {
+        //   return (feature.tags && feature.tags.zone === "3") || feature.tags.name === "Zone 3";
+        // });
+        // console.log(typeof(features));
+        // console.log(features);
+        // for (const i of features)
+        //     console.log(i);
+
         function addFeatures() {
           $("#browse_status").empty();
           dataLayer.addData(features);
