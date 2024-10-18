@@ -70207,7 +70207,21 @@
       );
       let image = wrap2.selectAll(".point-images img");
       if (image.empty()) {
-        image = wrap2.selectAll(".tag-list").append("div").attr("class", "point-images").append("img").attr("src", "./images/Zone".concat(_tags.zone, "/").concat(_tags.name, ".jpg")).attr("alt", "Obstacle image").attr("width", "100%");
+        image = wrap2.selectAll(".tag-list").append("div").attr("class", "point-images").append("img").attr(
+          "src",
+          () => {
+            const imageURL = "./images/Zone".concat(_tags.zone, "/").concat(_tags.name, ".jpg");
+            const imgTest = new Image();
+            imgTest.src = imageURL;
+            imgTest.onload = () => {
+              return imageURL;
+            };
+            imgTest.onerror = () => {
+              image.remove();
+              wrap2.selectAll(".point-images").remove();
+            };
+          }
+        ).attr("alt", "Obstacle image").attr("width", "100%");
       }
       if (image)
         updateImage();
@@ -70221,6 +70235,7 @@
           };
           imgTest.onerror = () => {
             image.remove();
+            wrap2.selectAll(".point-images").remove();
           };
         }
       }
