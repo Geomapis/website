@@ -14,14 +14,18 @@
  <nav class='primary'>
  <% unless controller_name == 'sessions' && action_name == 'new' %>
     <%= content_for :header %>
-    <div class="btn-group">
+    <%
+=begin%>
+ <div class="btn-group">
       <div id="edit_tab" class="btn-group">
         <%= link_to t("layouts.home"), root_path, class: "btn btn-outline-primary geolink flex-grow-1", id: "history_tab" %>
         <%= link_to t("layouts.edit"),
                     edit_path,
                     :class => "btn btn-outline-primary geolink editlink",
                     :id => "editanchor",
-                    :data => { :editor => preferred_editor } %>
+                    :data => { :editor => preferred_editor } %> 
+<%
+=end%>
         <%
 =begin%>
  <button class='btn btn-outline-primary dropdown-toggle dropdown-toggle-split' type='button' data-bs-toggle='dropdown'></button>

@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
 
   def new
     referer = safe_referer(params[:referer]) if params[:referer]
-
     parse_oauth_referer referer
   end
 

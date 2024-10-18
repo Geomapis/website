@@ -88,22 +88,27 @@ class SiteController < ApplicationController
         bbox = Node.visible.find(params[:node]).bbox.to_unscaled
         @lat = bbox.centre_lat
         @lon = bbox.centre_lon
-        @zoom = 18
+        # @zoom = 18
       elsif params[:way]
         bbox = Way.visible.find(params[:way]).bbox.to_unscaled
         @lat = bbox.centre_lat
         @lon = bbox.centre_lon
-        @zoom = 17
+        # @zoom = 17
       elsif params[:note]
         note = Note.visible.find(params[:note])
         @lat = note.lat
         @lon = note.lon
-        @zoom = 17
+        # @zoom = 17
       elsif params[:gpx] && current_user
         trace = Trace.visible_to(current_user).find(params[:gpx])
         @lat = trace.latitude
         @lon = trace.longitude
-        @zoom = 16
+        # @zoom = 16
+      else
+        @lat = 40.14568
+        @lon = 44.40129
+        params[:zoom] = 14
+        # @zoom = 14
       end
     rescue ActiveRecord::RecordNotFound
       # don't try and derive a location from a missing/deleted object
@@ -171,7 +176,7 @@ class SiteController < ApplicationController
     anchor = []
 
     anchor << "map=#{params.delete(:zoom) || 15}/#{params.delete(:lat)}/#{params.delete(:lon)}" if params[:lat] && params[:lon]
-
+    # anchor << "map=15.00/40.1486/44.3990" if params[:lat] && params[:lon]
     if params[:layers]
       anchor << "layers=#{params.delete(:layers)}"
     elsif params.delete(:notes) == "yes"
