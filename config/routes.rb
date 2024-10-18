@@ -155,7 +155,7 @@ OpenStreetMap::Application.routes.draw do
   get "/browse",                        :to => redirect(:path => "/history")
 
   # web site
-  root :to => "site#index", :via => [:get, :post]
+  root :to => "site#edit", :via => [:get, :post]
   get "/edit" => "site#edit"
   get "/copyright/:copyright_locale" => "site#copyright"
   get "/copyright" => "site#copyright"

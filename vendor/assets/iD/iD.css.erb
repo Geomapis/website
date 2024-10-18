@@ -262,14 +262,14 @@
 }
 
 
-.ideditor g.qaItem .shadow,
-.ideditor g.point .shadow,
-.ideditor g.note .shadow {
+/* g.qaItem .shadow,
+g.point .shadow,
+g.note .shadow {
     fill: none;
     stroke: #f6634f;
     stroke-width: 16;
     stroke-opacity: 0;
-}
+} */
 
 .ideditor g.qaItem.hover:not(.selected) .shadow,
 .ideditor g.note.hover:not(.selected) .shadow,
@@ -9499,10 +9499,10 @@ body {
 .section-data-layers,
 .old-modes,
 .undo-redo,
-.save, */
-.ideditor .add-row {
+.save,
+.add-row {
     display: none !important;
-}
+} */
 
 /* .layer,
 .point,
@@ -9516,3 +9516,109 @@ body {
     -webkit-user-drag: none !important;
     user-drag: none o !important;
 } */
+
+.ideditor g.qaItem .shadow,
+.ideditor g.note .shadow {
+    fill: none;
+    stroke: #f6634f;
+    stroke-width: 16;
+    stroke-opacity: 0;
+}
+
+
+.ideditor .qaItem.target,
+.ideditor .note.target,
+.ideditor .node.target,
+.ideditor .turn .target {
+    fill: none !important;
+    stroke: #000000 !important;
+    stroke-width: 16 !important;
+    stroke-opacity: 0 !important;
+}
+
+
+/* g.point .shadow .tag-amenity-obstacle_zone_3
+{
+    fill: none !important;
+    stroke: #000000 !important;
+    stroke-width: 16 !important;
+    stroke-opacity: 0 !important;
+} */
+
+/* g.point .shadow .point-zone4
+{
+    fill: none;
+    stroke: #000000;
+    stroke-width: 16;
+    stroke-opacity: 0;
+} */
+
+/* .tag-amenity-obstacle_zone_3 {
+    fill: none;
+    stroke: #170057;
+    stroke-width: 16;
+    stroke-opacity: 0;
+} */
+
+/* .point-zone3 {
+    stroke: #000000 !important;
+    display: none !important;
+} */
+
+.ideditor path.shadow.zone-3{
+    stroke: #0000ff !important;
+}
+
+.ideditor path.shadow.zone-4{
+    stroke: #00ff00 !important;
+}
+
+.ideditor .no-tags,
+.ideditor .added 
+{
+    display: none;
+}
+
+.ideditor .tag-amenity-obstacle_zone_3 .shadow,
+.ideditor .tag-amenity-obstacle_zone_3 .shadow,
+.ideditor .tag-amenity-obstacle_zone_3 .shadow {
+    fill: #0000ff !important;
+    stroke: #0000ff !important;
+    /* stroke-width: 16; */
+    stroke-opacity: 0;
+}
+
+.ideditor .tag-amenity-obstacle_zone_4 .shadow,
+.ideditor .tag-amenity-obstacle_zone_4 .shadow,
+.ideditor .tag-amenity-obstacle_zone_4 .shadow {
+    fill: #00ff00 !important;
+    stroke: #00ff00 !important;
+    /* stroke-width: 16; */
+    stroke-opacity: 0;
+}
+
+/* .geocode-item {
+    display: block;
+} */
+
+.ideditor .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.ideditor .dropdown-content {
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 1;
+    width: 100%;
+}
+.ideditor .dropdown-content .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+.ideditor .dropdown-content .dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.ideditor .point-images {
+    margin-top: 10px;
+}
