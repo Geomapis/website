@@ -72905,12 +72905,6 @@
         container.classed("mode-" + exited.id, false);
       });
       context.enter(modeBrowse(context));
-      if (!_initCounter++) {
-        if (!ui.hash.startWalkthrough) {
-          context.container().call(uiSplash(context)).call(uiRestore(context));
-        }
-        context.container().call(ui.shortcuts);
-      }
       var osm = context.connection();
       var auth = uiLoading(context).message(_t.html("loading_auth")).blocking(true);
       if (osm && auth) {
