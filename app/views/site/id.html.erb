@@ -9,7 +9,7 @@
 </head>
 <body>
 <% data = {}
-   if Settings.key?(:id_application)
+   if Settings.key?("R7e62Q8oFf-1j_cnYKOTvhKKElX2kKdHM92vmVzJKXo")
      token = current_user.oauth_token(Settings.id_application)
      data[:token] = token.token
    end

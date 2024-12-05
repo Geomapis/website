@@ -16,7 +16,7 @@ L.OSM.Mapnik = L.OSM.TileLayer.extend({
   options: {
     url: 'http://37.186.119.202:8082/hot/{z}/{x}/{y}.png',
     maxZoom: 28,
-    minZoom: 12,
+    minZoom: 10,
   }
 });
 

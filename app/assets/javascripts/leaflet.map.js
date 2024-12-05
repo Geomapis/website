@@ -109,13 +109,13 @@ L.OSM.Map = L.Map.extend({
       }));
     }
 
-    // this.baseLayers.push(new L.OSM.Google({
-    //   attribution: copyright + ". " + tracestrack + ". " + terms,
-    //   apikey: OSM.TRACESTRACK_KEY,
-    //   code: "P",
-    //   keyid: "tracestracktopo",
-    //   name: I18n.t("javascripts.map.base.tracestracktop_topo")
-    // }));
+    this.baseLayers.push(new L.OSM.Google({
+      attribution: copyright + ". " + tracestrack + ". " + terms,
+      apikey: OSM.TRACESTRACK_KEY,
+      code: "P",
+      keyid: "tracestracktopo",
+      name: "Google"
+    }));
     
     // this.baseLayers.push(new L.OSM.HOT({
     //   attribution: copyright + ". " + hotosm + ". " + terms,
