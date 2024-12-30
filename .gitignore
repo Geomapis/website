@@ -27,3 +27,4 @@ docker-db-data
 
 /config/master.key
 public/images
+.vscode

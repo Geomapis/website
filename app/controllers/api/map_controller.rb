@@ -2,7 +2,7 @@ module Api
   class MapController < ApiController
     authorize_resource :class => false
 
-    around_action :api_call_handle_error, :api_call_timeout
+    # before_action :verify_user_logged_in
 
     before_action :set_request_formats
 
@@ -29,8 +29,17 @@ module Api
         report_error(e.message)
         return
       end
+      # user = User.find_by(:id => session[:user])
+      # changesets = Changeset.where(:user_id => user.id)
+      # changesets.each do |changeset|
+      #   Rails.logger.info("HRES #{changeset.id}")
+      # end
+      # changeset_ids = changesets.pluck(:id)
 
+      # Rails.logger.info("HRES")
+      # Rails.logger.info(changesets)
       nodes = Node.bbox(@bounds).where(:visible => true).includes(:node_tags).limit(Settings.max_number_of_nodes + 1)
+      # nodes = Node.where(:visible => true, :changeset_id => changeset_ids).includes(:node_tags).limit(Settings.max_number_of_nodes + 1)
 
       node_ids = nodes.collect(&:id)
       if node_ids.length > Settings.max_number_of_nodes
@@ -96,6 +105,24 @@ module Api
       respond_to do |format|
         format.xml
         format.json
+      end
+    end
+
+    private
+
+    def verify_user_logged_in
+      user_id = session[:user]
+      fingerprint = session[:fingerprint]
+
+      if user_id.present? && fingerprint.present?
+        user = User.find_by(:id => user_id)
+        unless user && user.fingerprint == fingerprint
+          Rails.logger.warn("Invalid user or fingerprint mismatch.")
+          render :json => { :error => "Unauthorized access" }, :status => :unauthorized
+        end
+      else
+        Rails.logger.warn("User is not logged in or fingerprint is missing.")
+        render :json => { :error => "Unauthorized access" }, :status => :unauthorized
       end
     end
   end
